@@ -15,7 +15,7 @@ const CheckAuthProvider = ({ children }: PropsWithChildren) => {
 
   const {checkAuthStatus} = useAuthStore();
 
-  const { data, isLoading } = useQuery({
+  const { isLoading } = useQuery({
     queryKey: ['auth'],
     //queryFn: checkAuthAction,
     queryFn: checkAuthStatus,

@@ -15,7 +15,7 @@ export const CustomHeader = () => {
 
     const { gender } = useParams(); //segmentos de ruta que vienen obligatorios
 
-    const { user, logout } = useAuthStore();
+    const { logout } = useAuthStore();
 
     const inputRef = useRef<HTMLInputElement>(null)
     const searchQuery = searchParams.get('query') || ''

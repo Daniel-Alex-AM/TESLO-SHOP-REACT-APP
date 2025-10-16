@@ -1,12 +1,7 @@
 // https://github.com/Klerith/bolt-product-editor
 
-import { AdminTitle } from '@/admin/components/AdminTitle';
 import { Navigate, useNavigate, useParams } from 'react-router';
 
-import { useState } from 'react';
-import { X, Plus, Upload, Tag, SaveAll } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Link } from 'react-router';
 import { useProduct } from '@/admin/hooks/useProduct';
 import { CustomFullScreenLoading } from '@/components/custom/CustomFullScreenLoading';
 import { ProductForm } from './ui/ProductForm';
@@ -74,7 +69,7 @@ export const AdminProductPage = () => {
     //     ]
     // }
 
-    
+
     await mutation.mutateAsync(productLike, {
       onSuccess: (data) => {
         toast.success('PRODUCTO ACTUALIZADO CORRECTAMENTE', { position: 'top-right' });
