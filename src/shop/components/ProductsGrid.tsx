@@ -24,6 +24,10 @@ export const ProductsGrid = ({ products, productCount }: Props) => {
         setSearchParams(searchParams)
     }
 
+    const handleDataFromFilters = (value: boolean) => {
+        setShowFilters(value)
+    }
+
     return (
         <section className="py-12 px-4 lg:px-8">
             <div className="container mx-auto">
@@ -76,7 +80,7 @@ export const ProductsGrid = ({ products, productCount }: Props) => {
                     {/* Se oculta si pantalla es pequeña */}
                     {/* hidden donde-si-mostrarse:block */}
                     <div className="hidden lg:block">
-                        <FilterSidebar />
+                        <FilterSidebar dataFromFilter={handleDataFromFilters} />
                     </div>
 
                     {/* Mobile Filters */}
@@ -93,7 +97,7 @@ export const ProductsGrid = ({ products, productCount }: Props) => {
                                 </Button>
                             </div>
 
-                            <FilterSidebar />
+                            <FilterSidebar dataFromFilter={handleDataFromFilters}  />  
 
                         </div>
                     )}

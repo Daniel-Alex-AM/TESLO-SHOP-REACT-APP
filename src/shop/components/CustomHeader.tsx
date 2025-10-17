@@ -81,24 +81,59 @@ export const CustomHeader = () => {
 
                 </nav>
 
+                {/* Navigation - MOBILE */}
+                <nav className="md:hidden flex items-center space-x-8">
+                    <Link
+                        to="/"
+                        className={cn(`text-sm font-medium transition-colors hover:text-primary`,
+                            !gender ? 'underline underline-offset-4' : ''
+                        )}>
+                        Todos
+                    </Link>
+                    <Link
+                        to="/gender/men"
+                        className={cn(`text-sm font-medium transition-colors hover:text-primary`,
+                            gender === 'men' ? 'underline underline-offset-4' : ''
+                        )}>
+                        H
+                    </Link>
+                    <Link
+                        to="/gender/women"
+                        className={cn(`text-sm font-medium transition-colors hover:text-primary`,
+                            gender === 'women' ? 'underline underline-offset-4' : ''
+                        )}>
+                        M
+                    </Link>
+                    <Link
+                        to="/gender/kid"
+                        className={cn(`text-sm font-medium transition-colors hover:text-primary`,
+                            gender === 'kid' ? 'underline underline-offset-4' : ''
+                        )}>
+                        N
+                    </Link>
+
+                </nav>
+
                 {/* Search and Cart */}
-                <div className="flex items-center space-x-4">
-                    <div className="hidden md:flex items-center space-x-2">
+                <div className="flex items-center space-x-4 p-10">
+                    {/* Se movio a Filter Sidebar */}
+                    
+                    {/* <div className="hidden md:flex items-center space-x-2">
                         <div className="relative">
                             <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                             <Input
                                 ref={inputRef}
                                 placeholder="Buscar productos..."
-                                className="pl-9 w-64 h-9 bg-white"
+                                className="pl-9 w-40 h-9 bg-white"
                                 onKeyDown={handleSearch}
                                 defaultValue={searchQuery}
                             />
                         </div>
-                    </div>
-
+                    </div> */}
+{/* 
                     <Button variant="ghost" size="icon" className="md:hidden">
                         <Search className="h-5 w-5" />
-                    </Button>
+                    </Button> */}
 
                     {
                         authStatus === 'not-authenticated' ? (

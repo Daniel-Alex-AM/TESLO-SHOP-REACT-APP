@@ -3,8 +3,15 @@ import { Separator } from "@/components/ui/separator";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { useSearchParams } from "react-router";
+import { Search } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { useRef } from "react";
 
-export const FilterSidebar = () => {
+interface Props {
+    dataFromFilter: (value: boolean) => void
+}
+
+export const FilterSidebar = ({ dataFromFilter }: Props) => {
 
     const [searchParams, setSearchParams] = useSearchParams()
 
@@ -35,12 +42,45 @@ export const FilterSidebar = () => {
         { id: "xxl", label: "XXL" },
     ];
 
+    const inputRef = useRef<HTMLInputElement>(null)
+    // const searchQuery = searchParams.get('query') || ''
+
+    const handleSearch = (event: React.KeyboardEvent<HTMLInputElement>) => {
+        if (event.key !== 'Enter') return;
+
+        const query = inputRef.current?.value
+
+        const newSearchParams = new URLSearchParams() //Esto borra todos los params actuales de la url
+
+        if (!query) {
+            newSearchParams.delete('query');
+        } else {
+            newSearchParams.set('query', query || '')
+        }
+
+        setSearchParams(newSearchParams)
+        inputRef.current!.value = ""
+        dataFromFilter(false)
+
+    }
 
     return (
         <div className="w-64 space-y-6">
-            <div>
-                <h3 className="font-semibold text-lg mb-4">Filtros</h3>
+
+            <div className="flex items-center space-x-2">
+                <div className="relative">
+                    <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                    <Input
+                        ref={inputRef}
+                        placeholder="Buscar productos..."
+                        className="pl-9 w-64 h-9 bg-white"
+                        onKeyDown={handleSearch}
+                        // defaultValue={searchQuery}
+                    />
+                </div>
             </div>
+
+
 
             {/* Sizes */}
             <div className="space-y-4">
