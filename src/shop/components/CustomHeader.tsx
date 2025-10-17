@@ -1,8 +1,8 @@
-import { Search } from "lucide-react";
-import { Input } from "@/components/ui/input";
-import { useRef, type KeyboardEvent } from "react";
+// import { Search } from "lucide-react";
+// import { Input } from "@/components/ui/input";
+// import { useRef, type KeyboardEvent } from "react";
 import { Button } from "@/components/ui/button";
-import { Link, useParams, useSearchParams } from "react-router";
+import { Link, useParams } from "react-router";
 import { cn } from "@/lib/utils";
 import { CustomLogo } from "@/components/custom/CustomLogo";
 import { useAuthStore } from "@/auth/store/auth.store";
@@ -11,30 +11,30 @@ export const CustomHeader = () => {
     // const [cartCount] = useState(3);
     const { authStatus, isAdmin } = useAuthStore();
 
-    const [searchParams, setSearchParams] = useSearchParams(); // query parameters opcionales
+    // const [searchParams, setSearchParams] = useSearchParams(); // query parameters opcionales
 
     const { gender } = useParams(); //segmentos de ruta que vienen obligatorios
 
     const { logout } = useAuthStore();
 
-    const inputRef = useRef<HTMLInputElement>(null)
-    const searchQuery = searchParams.get('query') || ''
+    // const inputRef = useRef<HTMLInputElement>(null)
+    // const searchQuery = searchParams.get('query') || ''
 
-    const handleSearch = (event: KeyboardEvent<HTMLInputElement>) => {
-        if (event.key !== 'Enter') return;
+    // const handleSearch = (event: KeyboardEvent<HTMLInputElement>) => {
+    //     if (event.key !== 'Enter') return;
 
-        const query = inputRef.current?.value
+    //     const query = inputRef.current?.value
 
-        const newSearchParams = new URLSearchParams() //Esto borra todos los params actuales de la url
+    //     const newSearchParams = new URLSearchParams() //Esto borra todos los params actuales de la url
 
-        if (!query) {
-            newSearchParams.delete('query');
-        } else {
-            newSearchParams.set('query', query || '')
-        }
+    //     if (!query) {
+    //         newSearchParams.delete('query');
+    //     } else {
+    //         newSearchParams.set('query', query || '')
+    //     }
 
-        setSearchParams(newSearchParams)
-    }
+    //     setSearchParams(newSearchParams)
+    // }
 
     return <header className="sticky top-0 z-50 w-full border-b backdrop-blur bg-slate-50">
         <div className="container mx-auto px-4 lg:px-8">
